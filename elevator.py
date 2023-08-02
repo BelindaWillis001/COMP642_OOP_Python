@@ -20,6 +20,10 @@ class Elevator:
     def closeDoor(self):
         # Print a message indicating that the door is closed
         print("Door is closed on floor", self.currentfloor)
+
+    # add dunder method str to return a printable string
+    def __str__(self):
+        return "Elevator is on floor " + str(self.currentfloor)
     
 # Create the object and declare a variable to reference that specific object (Anelevator - the cookie), initialise the object on floor 6
 Anelevator = Elevator(6)
@@ -35,6 +39,9 @@ Anelevator.closeDoor()
 
 # Move the elevator to the ground floor
 Anelevator.gotoGround()
+
+# Print the current floor of the elevator using the dunder method (str) defined above
+print(Anelevator)
 
 # Print the current floor of the elevator
 print("Current floor:", Anelevator.currentfloor) 
