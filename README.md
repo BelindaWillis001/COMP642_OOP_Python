@@ -13,5 +13,6 @@ Added the SPeak method to the student class
 03/08 Added dunder method to elevator py to print current floor
 3/08 added another list to myStudents.py;
 4/08 added criteria to elevator to restrict to six floors and stop current floor being selected;
-added the method addPerson to the Student list
+added the method addPerson to the Student list;
+wrote a simplified pizza house program based on Pats lecture
 
