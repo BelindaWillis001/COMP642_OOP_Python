@@ -6,8 +6,13 @@ class Elevator:
         self.currentfloor = currentFloor
         # Create the method (function, eg moveUp) - the method is a function that is part of a class, or the behaviour of an object
     def gotoFloor(self, floor):
-        # Update the current floor to the desired floor
-        self.currentfloor = floor
+        # check the floor is between 0 and 6 as there are only 6 floors - and the current floor is not the same as the desired floor
+        if 0 <= floor <= 6 and self.currentfloor != floor:
+            # Update the current floor to the desired floor
+            self.currentfloor = floor
+        else:
+            # Print an error message
+            print("Invalid floor request")
 
     def gotoGround(self):
         # Move the elevator to the ground floor (floor 0)

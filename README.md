@@ -8,6 +8,7 @@ Exercises from Lectorials
 Make the age a parameter and pass in the age - instead of hard coding the age into the code - makes the selection criteria more general 
 Now we can count the number of old students - making it more general by passing anAge as a parameter; 
 Added the SPeak method to the student class
-New py - Lincoln Pizza House - lots of classes and some orders
-Added dunder method to elevator py to print current floor
-added another list to myStudents.py 
+02/08 New py - Lincoln Pizza House - lots of classes and some orders
+03/08 Added dunder method to elevator py to print current floor
+3/08 added another list to myStudents.py 
+4/08 added criteria to elevator to restrict to six floors and stop current floor being selected
