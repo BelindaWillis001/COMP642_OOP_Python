@@ -16,17 +16,21 @@ Person2 = Student("Sarah", "Lind", 23)
 Person3 = Student("John", "Strange", 62)
 # Create a list of my students
 myStudents = []
-myStudents.append(Person0)
-myStudents.append(Person1)
-myStudents.append(Person3)
+# Define a method to add a new person to myStudents list.
+def addPerson(aPerson, aList):
+    aList.append(aPerson)
 
 # Create a list of my students
 myotherStudents = []
 myotherStudents.append(Person3)
 myotherStudents.append(Person2)
 
-# Define a method to add a new person to myStudents list.
-myStudents.insert(1, Person2)
+
+# add students to the list of myStudents using the method addPerson
+addPerson(Person0, myStudents)
+addPerson(Person1, myStudents)
+addPerson(Person2, myStudents)
+addPerson(Person3, myStudents)
 
 # Print the length of the myStudents list
 print(len(myStudents))
@@ -34,12 +38,11 @@ print(len(myStudents))
 # Print the length of the myotherStudents list
 print(len(myotherStudents))
 
-# Define a method to remove a person from myStudents list.
-myStudents.pop(1)
-# Define a method to add a new person to myStudents list.
-myStudents.append(Person2)
+# Remove a person from myStudents list from index 2 (Sarah Lind).
+myStudents.pop(2)
 
-# # Define the method to print the list of students
+
+# # Define the method to print a list
 def displayRowdata(anylist):
     for row in anylist:
         print(row)
@@ -53,17 +56,17 @@ displayRowdata(myotherStudents)
 def dispOldstudents():
     for student in myStudents:
         if student.Age > 30:
-            print(student.firstname)
+            print("The name of the older student: " + student.firstname + " " + "(hard-coded age)")
 dispOldstudents()
 
 # Define the old students with age as a parameter
 def dispOldstudents(anAge):
     for student in myStudents:
         if student.Age > anAge:
-            print(student.firstname)
-dispOldstudents(40)
+            print("The name of the older student: " + student.firstname + " " + "(age as a parameter)")
+dispOldstudents(50)
 
-# Define the number of old students using count method
+# Define the number of old students using count method with age as a parameter of the method countOldstudents
 def countOldstudents(anAge):
     count = 0
     for student in myStudents:
@@ -71,4 +74,4 @@ def countOldstudents(anAge):
             count += 1
     return count
 
-print("The number of old students is: ", countOldstudents(20))
+print("The number of old students is: ", countOldstudents(50))
