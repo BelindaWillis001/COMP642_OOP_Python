@@ -15,4 +15,4 @@ Added the SPeak method to the student class
 4/08 added criteria to elevator to restrict to six floors and stop current floor being selected;
 added the method addPerson to the Student list;
 wrote a simplified pizza house program based on Pats lecture
-
+added the code to print student names that are both student lists

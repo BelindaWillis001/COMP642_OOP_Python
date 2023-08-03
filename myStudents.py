@@ -38,8 +38,8 @@ print(len(myStudents))
 # Print the length of the myotherStudents list
 print(len(myotherStudents))
 
-# Remove a person from myStudents list from index 2 (Sarah Lind).
-myStudents.pop(2)
+# # Remove a person from myStudents list from index 2 (Sarah Lind).
+# myStudents.pop(2)
 
 
 # # Define the method to print a list
@@ -75,3 +75,11 @@ def countOldstudents(anAge):
     return count
 
 print("The number of old students is: ", countOldstudents(50))
+
+# print the names of students that are in both lists
+def printCommonStudents():
+    for student in myStudents:
+        for otherstudent in myotherStudents:
+            if student == otherstudent:
+                print(student.firstname + " " + student.lastname + " is in both student lists.")
+printCommonStudents()
