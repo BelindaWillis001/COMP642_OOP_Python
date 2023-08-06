@@ -48,6 +48,12 @@ class Member:
     def memberDetails(self):
         print("This is getting the member details from the private setting....")
         return self.__memberFirstname + " " + self.__memberLastname + " " + self.__memberID
+    
+    # Define a setter method to set the member's details from the private attributes
+    @memberDetails.setter
+    def memberDetails(self, memberDetails):
+        print("This is setting the member details from the private setting....")
+        self.__memberFirstname, self.__memberLastname, self.__memberID = memberDetails.split(" ")
 
     # Define the Dunder method to return a printable string of Member attributes
     def __str__(self):
@@ -104,6 +110,9 @@ member3 = Member("Belinda", "Allison", "3")
 member4 = Member("Peter", "Dunn", "4")
 member5 = Member("Cassie", "Lieu", "5")
     
+print(member2.memberDetails)
+member2.memberDetails = "Scott Allison 2"
+
 print(member2.memberDetails)
 
 
