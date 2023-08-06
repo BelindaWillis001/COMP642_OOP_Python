@@ -16,3 +16,4 @@ Added the SPeak method to the student class
 added the method addPerson to the Student list;
 wrote a simplified pizza house program based on Pats lecture
 added the code to print student names that are both student lists
+6/08 started working on OOP app - assignment 1 - gym bookings
