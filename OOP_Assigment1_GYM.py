@@ -43,12 +43,12 @@ class Member:
 # Define the private method to display the member's details
     def __display(self):
         print("This is a private method")
+
     # Define a getter method to return the member's details from the private attributes
     @property
     def memberDetails(self):
         print("This is getting the member details from the private setting....")
         return self.__memberFirstname + " " + self.__memberLastname + " " + self.__memberID
-    
     # Define a setter method to set the member's details from the private attributes
     @memberDetails.setter
     def memberDetails(self, memberDetails):
