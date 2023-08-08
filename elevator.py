@@ -61,3 +61,12 @@ print(Anelevator)
 
 # Print the current floor of the elevator
 print("Current floor:", Anelevator.currentfloor) 
+
+# print the current floor of the elevator using the getter method
+print("Current floor:", Anelevator.currentfloor)
+
+# Set the current floor of the elevator to floor 3 using the setter method
+Anelevator.currentfloor = 3
+
+# Print the current floor of the elevator using the getter method
+print("Current floor:", Anelevator.currentfloor)
