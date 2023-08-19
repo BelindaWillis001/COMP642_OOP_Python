@@ -1,44 +1,44 @@
 from Vid_Shop_Movies import Movie
-# class Person:
-class Person:
+# class Customer:
+class Customer:
     nextID = 1000
-    def __init__(self, pname):
-        self.__personID = Person.nextID
-        self.__personName = pname
-        self.__personMovies = []
-        Person.nextID += 1
-# define the method rentMovie() to add a movie to the list of movies rented by a person
+    def __init__(self, cname):
+        self.__CustomerID = Customer.nextID
+        self.__CustomerName = cname
+        self.__CustomerMovies = []
+        Customer.nextID += 1
+# define the method rentMovie() to add a movie to the list of movies rented by a Customer
     def rentMovie(self, aMovie):
-        self.__personMovies.append(aMovie)
-# define the method returnMovie() to remove a movie from the list of movies rented by a person
+        self.__CustomerMovies.append(aMovie)
+# define the method returnMovie() to remove a movie from the list of movies rented by a Customer
     def returnMovie(self, aMovie):
-        self.__personMovies.remove(aMovie)
-# define the method getRentalsCount() to return the number of movies rented by a person
+        self.__CustomerMovies.remove(aMovie)
+# define the method getRentalsCount() to return the number of movies rented by a Customer
     def numRentals(self):
-        return len(self.__personMovies)
+        return len(self.__CustomerMovies)
     
-# define the getter method for the private attribute __personID 
+# define the getter method for the private attribute __CustomerID 
     @property
-    def PersonID(self):
-        return self.__personID
-# define the getter method for the private attribute __personName
+    def CustomerID(self):
+        return self.__CustomerID
+# define the getter method for the private attribute __CustomerName
     @property
-    def PersonName(self,):
-        return self.__personName
-# define the setter method for the private attribute __personName
-    @PersonName.setter
-    def PersonName(self, value):
-        self.__personName = value
-# define the getter method for the private attribute __personMovies
+    def CustomerName(self,):
+        return self.__CustomerName
+# define the setter method for the private attribute __CustomerName
+    @CustomerName.setter
+    def CustomerName(self, value):
+        self.__CustomerName = value
+# define the getter method for the private attribute __CustomerMovies
     @property
     def Movies(self):
-        return self.__personMovies
+        return self.__CustomerMovies
 
     def __str__(self):
-        return str(self.__personID) + " " + self.__personName
+        return str(self.__CustomerID) + " " + self.__CustomerName
     
-    def personDetail(self):
-        print(self.PersonName)
+    def CustomerDetail(self):
+        print(self.CustomerName)
         for movie in self.Movies:
             print(movie)
 
@@ -47,20 +47,20 @@ aMovie = Movie('Sisterhood of The Travelling Pants')
 anotherMovie = Movie('The Matrix')
 print(aMovie)
 print(anotherMovie)
-# create the objects aPerson and anotherPerson of the class Person
-aPerson = Person("Belinda")
-anotherPerson = Person("Cindy")
-print(aPerson)
-print(anotherPerson)
-# create an instance of a person renting a movie
-aPerson.rentMovie(aMovie)
-aPerson.rentMovie(anotherMovie)
+# create the objects aCustomer and anotherCustomer of the class Customer
+aCustomer = Customer("Belinda")
+anotherCustomer = Customer("Cindy")
+print(aCustomer)
+print(anotherCustomer)
+# create an instance of a Customer renting a movie
+aCustomer.rentMovie(aMovie)
+aCustomer.rentMovie(anotherMovie)
 aMovie.MovieRenter = "Belinda W"
 anotherMovie.MovieRenter = "Belinda W"
-aPerson.personDetail()
-print(aPerson.numRentals())
-# create another instance of a person renting another movie
-anotherPerson.rentMovie(anotherMovie)
-anotherMovie.__movieRenter = anotherPerson.PersonName
-anotherPerson.personDetail()
-print(anotherPerson.numRentals())
+aCustomer.CustomerDetail()
+print(aCustomer.numRentals())
+# create another instance of a Customer renting another movie
+anotherCustomer.rentMovie(anotherMovie)
+anotherMovie.MovieRenter = anotherCustomer.CustomerName
+anotherCustomer.CustomerDetail()
+print(anotherCustomer.numRentals())

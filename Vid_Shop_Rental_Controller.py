@@ -1,4 +1,4 @@
-from Vid_Shop_Customers import Person
+from Vid_Shop_Customers import Customer
 from Vid_Shop_Movies import Movie
 
 class Rental:
@@ -6,52 +6,80 @@ class Rental:
         self.allMovies = []
         self.allCustomers = []
 
-    def newMovie(self, movieName):
-        aMovie = Movie(movieName)
+    def newMovie(self, mname):
+        aMovie = Movie(mname)
         self.allMovies.append(aMovie)
 
-    def newCustomer(self, customerName):
-        aCustomer = Person(customerName)
+    def newCustomer(self, CustomerName):
+        aCustomer = Customer(CustomerName)
         self.allCustomers.append(aCustomer)
 
-    def findMovie(self, movieName):
+    def findMovie(self, mname):
         for movie in self.allMovies:
-            if movie.MovieName == movieName:
+            if movie.MovieName == mname:
                 return movie
         return None
     
-    def findCustomer(self, customerName):
+    def findCustomer(self, CustomerName):
         for customer in self.allCustomers:
-            if customer.PersonName == customerName:
+            if customer.CustomerName() == CustomerName:
                 return customer
         return None
-
-    def rentMovie(self, customerName, movieName):
-        aMovie = self.findMovie(movieName)
-        aPerson = self.findCustomer(customerName)
+    
+    def MovieRenter(self, CustomerName, mname):
+        aMovie = self.findMovie(mname)
+        aCustomer = self.findCustomer(CustomerName)
         print(aMovie)
-        print(aPerson)
+        print(aCustomer)
+        print("Previous Renter is " + aMovie.MovieRenter)
+        MovieRenter = aMovie.MovieRenter
+        if aMovie.MovieRenter == "None":
+            aMovie.MovieRenter = aCustomer.CustomerName
+        else:
+            return aMovie.MovieRenter
+
+    def rentMovie(self, CustomerName, mname):
+        aMovie = self.findMovie(mname)
+        aCustomer = self.findCustomer(CustomerName)
+
+        if aMovie is None:
+            print("Movie not found")
+            return
+        
+        if aCustomer is None:
+            print("Customer not found")
+            return
+        
+        if aMovie.MovieRenter != "None":
+            print("Movie already rented")
+            return
+        
+        # the movie is available for rent
+        aMovie.MovieRenter = aCustomer.CustomerName
+
+        print(aMovie.MovieName())
+        print(aCustomer.CustomerName())
         print("Previous Renter is " + aMovie.MovieRenter)
         pRenter = aMovie.MovieRenter
         if aMovie.MovieRenter == "None":
-            aMovie.MovieRenter = aPerson.PersonName
+            aMovie.MovieRenter = aCustomer.CustomerName
         else:
-            prevRenter = self.findPerson(pRenter)
+            prevRenter = self.findCustomer(pRenter)
             print(prevRenter)
             prevRenter.returnMovie(aMovie)
-            aMovie.MovieRenter = aPerson.PersonName
+            aMovie.MovieRenter = aCustomer.CustomerName
         
         print(aMovie.MovieName + " is rented by " + aMovie.MovieRenter)
 
-        aPerson.rentMovie(aMovie)
-        print(aPerson.PersonName + " has rented " + str(aPerson.numRentals()) + " movies")
+        aCustomer.rentMovie(aMovie)
+        print(aCustomer.CustomerName + " has rented " + str(aCustomer.numRentals()) + " movies")
 
-        for person in self.allCustomers:
-            person.personDetail()
+        for Customer in self.allCustomers:
+            Customer.CustomerDetail()
     
-    def returnMovie(self, customerName, movieName):
-        aMovie = self.findMovie(movieName)
-        aCustomer = self.findCustomer(customerName)
+    def returnMovie(self, CustomerName, mname):
+        aMovie = self.findMovie(mname)
+        aCustomer = self.findCustomer(CustomerName)
         if aMovie == None:
             print("Movie not found")
             return
@@ -65,10 +93,10 @@ class Rental:
         aCustomer.returnMovie(aMovie)
         print("Movie returned")
 
-    def listMovies(self, customerName):
+    def listMovies(self, CustomerName):
         myList = ""
-        aPerson = self.findCustomer(customerName)
+        aCustomer = self.findCustomer(CustomerName)
 
-        for movie in aPerson.PersonMovies:
+        for movie in aCustomer.CustomerMovies:
             myList += myList + movie.MovieName + "\n"
         return myList
