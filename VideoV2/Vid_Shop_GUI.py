@@ -25,6 +25,7 @@ def btnRentMovie():
     selMovieIndex = lstbox_movies.curselection()
     selectedMovie = lstbox_movies.get(selMovieIndex)
 
+    print(selectedCustomer + " " + selectedMovie)
     # rent the movie
     company.rentMovie(str(selectedCustomer), str(selectedMovie))
 
