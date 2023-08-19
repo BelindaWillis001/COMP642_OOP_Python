@@ -9,94 +9,59 @@ class Rental:
     def newMovie(self, mname):
         aMovie = Movie(mname)
         self.allMovies.append(aMovie)
-
+# define the method to add a new customer to the list of customers
     def newCustomer(self, CustomerName):
         aCustomer = Customer(CustomerName)
         self.allCustomers.append(aCustomer)
-
+# define the method to find the movie name to be rented
     def findMovie(self, mname):
         for movie in self.allMovies:
+            print(movie.MovieName)
             if movie.MovieName == mname:
                 return movie
         return None
-    
+# define the method to find the customer name
     def findCustomer(self, CustomerName):
         for customer in self.allCustomers:
-            if customer.CustomerName() == CustomerName:
+            print(customer.CustomerName)
+            if customer.CustomerName == CustomerName:
                 return customer
         return None
-    
-    def MovieRenter(self, CustomerName, mname):
-        aMovie = self.findMovie(mname)
-        aCustomer = self.findCustomer(CustomerName)
-        print(aMovie)
-        print(aCustomer)
-        print("Previous Renter is " + aMovie.MovieRenter)
-        MovieRenter = aMovie.MovieRenter
-        if aMovie.MovieRenter == "None":
-            aMovie.MovieRenter = aCustomer.CustomerName
-        else:
-            return aMovie.MovieRenter
+
+
 
     def rentMovie(self, CustomerName, mname):
-        aMovie = self.findMovie(mname)
-        aCustomer = self.findCustomer(CustomerName)
+        selectedMovie = self.findMovie(mname)
+        selectedCustomer = self.findCustomer(CustomerName)
+        selectedCustomer.rentMovie(selectedMovie)
 
-        if aMovie is None:
-            print("Movie not found")
-            return
-        
-        if aCustomer is None:
-            print("Customer not found")
-            return
-        
-        if aMovie.MovieRenter != "None":
-            print("Movie already rented")
-            return
-        
-        # the movie is available for rent
-        aMovie.MovieRenter = aCustomer.CustomerName
-
-        print(aMovie.MovieName())
-        print(aCustomer.CustomerName())
-        print("Previous Renter is " + aMovie.MovieRenter)
-        pRenter = aMovie.MovieRenter
-        if aMovie.MovieRenter == "None":
-            aMovie.MovieRenter = aCustomer.CustomerName
-        else:
-            prevRenter = self.findCustomer(pRenter)
-            print(prevRenter)
-            prevRenter.returnMovie(aMovie)
-            aMovie.MovieRenter = aCustomer.CustomerName
-        
-        print(aMovie.MovieName + " is rented by " + aMovie.MovieRenter)
-
-        aCustomer.rentMovie(aMovie)
-        print(aCustomer.CustomerName + " has rented " + str(aCustomer.numRentals()) + " movies")
-
-        for Customer in self.allCustomers:
-            Customer.CustomerDetail()
     
-    def returnMovie(self, CustomerName, mname):
-        aMovie = self.findMovie(mname)
-        aCustomer = self.findCustomer(CustomerName)
-        if aMovie == None:
-            print("Movie not found")
-            return
-        if aCustomer == None:
-            print("Customer not found")
-            return
-        if aMovie.MovieRenter == "None":
-            print("Movie not rented")
-            return
-        aMovie.MovieRenter = "None"
-        aCustomer.returnMovie(aMovie)
-        print("Movie returned")
 
-    def listMovies(self, CustomerName):
-        myList = ""
-        aCustomer = self.findCustomer(CustomerName)
+    def LoadRentalShopData(self):
+        # create the objects aMovie and anotherMovie of the class Movie
+        aMovie = Movie('Sisterhood of The Travelling Pants')
+        anotherMovie = Movie('The Matrix')
+        anunrentedMovie = Movie('The Fly')
+        # create the objects aCustomer and anotherCustomer of the class Customer 
+        aCustomer = Customer("Belinda")
+        anotherCustomer = Customer("Cindy")
+        # create an instance of a Customer renting a movie
+        aCustomer.rentMovie(aMovie)
+        aMovie.MovieRenter = aCustomer.CustomerName
+        aCustomer.CustomerDetail()
+        print(aCustomer.numRentals())
+        # create another instance of a Customer renting another movie
+        anotherCustomer.rentMovie(anotherMovie)
+        anotherMovie.MovieRenter = anotherCustomer.CustomerName
+        anotherCustomer.CustomerDetail()
+        print(anotherCustomer.numRentals())
+        # add aCustomer to the Rental Shop
+        self.newCustomer(aCustomer)
+        self.newCustomer(anotherCustomer)
+        print ("the list is " + str(self.allCustomers))
+        # add aMovie to the Rental Shop
+        self.newMovie(aMovie)
+        self.newMovie(anotherMovie)
+        self.newMovie(anunrentedMovie)
+        print ("the list is " + str(self.allMovies))
 
-        for movie in aCustomer.CustomerMovies:
-            myList += myList + movie.MovieName + "\n"
-        return myList

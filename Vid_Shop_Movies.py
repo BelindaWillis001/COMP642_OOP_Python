@@ -20,10 +20,6 @@ class Movie:
     @MovieRenter.setter
     def MovieRenter(self, value):
         self.__movieRenter = value
-    
+    # define the dunder method for returning the movie name and the movie renter
     def __str__(self):
         return self.__movieName + " " + self.__movieRenter
-    # define the equality method for the class Movie which compares the 
-    # movie names of two movies and returns True if they are the same 
-    def __eq__(self, other):
-        return self.__movieName == other.__movieName

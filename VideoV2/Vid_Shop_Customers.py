@@ -16,8 +16,8 @@ class Customer:
 # define the method getRentalsCount() to return the number of movies rented by a Customer
     def numRentals(self):
         return len(self.__CustomerMovies)
-    
-# define the getter method for the private attribute __CustomerID 
+
+# define the getter method for the private attribute __CustomerID
     @property
     def CustomerID(self):
         return self.__CustomerID
@@ -36,7 +36,7 @@ class Customer:
 
     def __str__(self):
         return str(self.__CustomerID) + " " + self.__CustomerName
-    
+
     def CustomerDetail(self):
         print(self.CustomerName)
         for movie in self.Movies:

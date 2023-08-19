@@ -16,14 +16,14 @@ class Customer:
 # define the method getRentalsCount() to return the number of movies rented by a Customer
     def numRentals(self):
         return len(self.__CustomerMovies)
-    
-# define the getter method for the private attribute __CustomerID 
+
+# define the getter method for the private attribute __CustomerID
     @property
     def CustomerID(self):
         return self.__CustomerID
 # define the getter method for the private attribute __CustomerName
     @property
-    def CustomerName(self,):
+    def CustomerName(self):
         return self.__CustomerName
 # define the setter method for the private attribute __CustomerName
     @CustomerName.setter
@@ -36,31 +36,9 @@ class Customer:
 
     def __str__(self):
         return str(self.__CustomerID) + " " + self.__CustomerName
-    
+
     def CustomerDetail(self):
         print(self.CustomerName)
         for movie in self.Movies:
             print(movie)
 
-# create the objects aMovie and anotherMovie of the class Movie
-aMovie = Movie('Sisterhood of The Travelling Pants')
-anotherMovie = Movie('The Matrix')
-print(aMovie)
-print(anotherMovie)
-# create the objects aCustomer and anotherCustomer of the class Customer
-aCustomer = Customer("Belinda")
-anotherCustomer = Customer("Cindy")
-print(aCustomer)
-print(anotherCustomer)
-# create an instance of a Customer renting a movie
-aCustomer.rentMovie(aMovie)
-aCustomer.rentMovie(anotherMovie)
-aMovie.MovieRenter = "Belinda W"
-anotherMovie.MovieRenter = "Belinda W"
-aCustomer.CustomerDetail()
-print(aCustomer.numRentals())
-# create another instance of a Customer renting another movie
-anotherCustomer.rentMovie(anotherMovie)
-anotherMovie.MovieRenter = anotherCustomer.CustomerName
-anotherCustomer.CustomerDetail()
-print(anotherCustomer.numRentals())
