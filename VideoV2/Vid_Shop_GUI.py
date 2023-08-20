@@ -27,7 +27,7 @@ def btnRentMovie():
 
     print(selectedCustomer + " " + selectedMovie)
     # rent the movie
-    company.rentMovie(str(selectedCustomer), str(selectedMovie))
+    company.RentMovie(str(selectedCustomer), str(selectedMovie))
 
 # define a method for an already rented movie
 def btnMovieRenter():

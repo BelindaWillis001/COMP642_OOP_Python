@@ -1,7 +1,7 @@
 class Movie:
     def __init__(self, mname):
         self.__movieName = mname
-        self.__movieRenter = "None"
+        self.__movieRenter = None
         self.__movieReturn = None
         self.__movieRentFee = None
     # define the getter method for the private attribute __movieName 
@@ -22,4 +22,4 @@ class Movie:
         self.__movieRenter = value
     # define the dunder method for returning the movie name and the movie renter
     def __str__(self):
-        return self.__movieName + " " + self.__movieRenter
+        return self.__movieName
