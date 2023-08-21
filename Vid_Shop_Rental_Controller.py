@@ -5,6 +5,7 @@ class Rental:
     def __init__(self):
         self.allMovies = []
         self.allCustomers = []
+        self.rentedMovies = []
 
     def newMovie(self, mname):
         aMovie = Movie(mname)
@@ -30,14 +31,37 @@ class Rental:
 
 # define the method to rent a movie
     def RentMovie(self, CustomerName, mname):
-        
+        selectedMovie = self.findMovie(mname)
+        selectedCustomer = self.findCustomer(CustomerName)
+        # Check if the selected movie and customer exist
+        if selectedMovie is None:
+            print("Movie " + str(selectedMovie) + "not found")
+            return
+        if selectedCustomer is None:
+            print("Customer " + str(selectedCustomer) + "not found")
+            return
+        # Check if the movie is already rented
+        if selectedMovie.MovieRenter != None:
+            print(str(selectedMovie.MovieName) + " is already rented")
+            return
+        # rent the movie and update movie lists
+        selectedMovie.MovieRenter = selectedCustomer.CustomerName
+        selectedCustomer.rentMovie(selectedMovie)
+        print("Movie " + str(selectedMovie.MovieName) + "rented by " + str(selectedCustomer.CustomerName))
+        # refresh the list of available movies
+        self.AllAvailableMovies()
+        # refresh the list of rented movies
+        self.AllRentedMovies()
+
+# define the method to return a movie
+
 
     def LoadRentalShopData(self):
         # create the objects aMovie and anotherMovie of the class Movie
         firstMovie = Movie('Sisterhood of The Travelling Pants')
         anotherMovie = Movie('The Matrix')
         adifferentMovie = Movie('The Fly')
-        # create the objects aCustomer and anotherCustomer of the class Customer 
+        # create the objects aCustomer and anotherCustomer of the class Customer
         aCustomer = Customer("Belinda")
         anotherCustomer = Customer("Cindy")
         # create an instance of a Customer renting a movie

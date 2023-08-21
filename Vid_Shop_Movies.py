@@ -4,7 +4,7 @@ class Movie:
         self.__movieRenter = None
         self.__movieReturn = None
         self.__movieRentFee = None
-    # define the getter method for the private attribute __movieName 
+    # define the getter method for the private attribute __movieName
     @property
     def MovieName(self):
         return self.__movieName
