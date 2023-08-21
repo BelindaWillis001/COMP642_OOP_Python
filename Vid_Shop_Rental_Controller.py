@@ -69,30 +69,30 @@ class Rental:
         # set the movie renter to the customer name
         firstMovie.MovieRenter = aCustomer.CustomerName
         aCustomer.CustomerDetail()
-        print(aCustomer.numRentals())
+        # print(aCustomer.numRentals())
         # create another instance of a Customer renting another movie
         anotherCustomer.rentMovie(anotherMovie)
         # set the movie renter to the customer name
         anotherMovie.MovieRenter = anotherCustomer.CustomerName
         anotherCustomer.CustomerDetail()
-        print(anotherCustomer.numRentals())
+        # print(anotherCustomer.numRentals())
         # add aCustomer to the Rental Shop
         self.newCustomer(aCustomer)
         self.newCustomer(anotherCustomer)
-        print ("the list is " + str(self.allCustomers))
+        # print ("the list is " + str(self.allCustomers))
         # add aMovie to the Rental Shop
         self.newMovie(firstMovie)
         self.newMovie(anotherMovie)
         self.newMovie(adifferentMovie)
-        print ("the list is " + str(self.allMovies))
+        # print ("the list is " + str(self.allMovies))
 
 # create the loop through to find the movies that haven't been rented
     def AllAvailableMovies(self):
         resultsAvail = []
         for movie in self.allMovies:
             # print a statement to check the movie name and the movie renter
-            print(movie.MovieName)
-            print(movie.MovieName.MovieRenter)
+            # print(movie.MovieName)
+            # print(movie.MovieName.MovieRenter)
             if movie.MovieName.MovieRenter == None:
                 resultsAvail.append(movie)
         return resultsAvail
@@ -100,8 +100,8 @@ class Rental:
     def AllRentedMovies(self):
         resultsRented = []
         for movie in self.allMovies:
-            print(movie.MovieName)
-            print(movie.MovieName.MovieRenter)
+            # print(movie.MovieName)
+            # print(movie.MovieName.MovieRenter)
             if movie.MovieName.MovieRenter != None:
                 resultsRented.append(movie)
         return resultsRented
