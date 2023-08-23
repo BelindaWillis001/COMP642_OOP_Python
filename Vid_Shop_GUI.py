@@ -18,7 +18,6 @@ def btnReadData():
     for movie in rental_obj.AllRentedMovies():
         lstbox_moviesR.insert(tk.END, movie.MovieName)
 
-
 # Define a method to rent a movie
 def btnRentMovie():
     # get the customer
@@ -44,7 +43,6 @@ def btnReturnMovie():
 
     # return the movie
     rental_obj.returnMovie(str(selectedCustomer), str(selectedMovie))
-    
 
 
 # Create a window

@@ -17,15 +17,19 @@ class Rental:
 # define the method to find the movie name to be rented
     def findMovie(self, mname):
         for movie in self.allMovies:
-            print(movie.MovieName)
-            if movie.MovieName == mname:
+            # added this line 2108 - dont know why
+            movieName = str(movie.MovieName)
+            print(movieName)
+            if movieName == mname:
                 return movie
         return None
 # define the method to find the customer name
     def findCustomer(self, CustomerName):
         for customer in self.allCustomers:
-            print(customer.CustomerName)
-            if customer.CustomerName == CustomerName:
+            # added this line 2108 - dont know why
+            customerName = str(customer.CustomerName)
+            print(customerName)
+            if customerName == CustomerName:
                 return customer
         return None
 
@@ -47,11 +51,13 @@ class Rental:
         # rent the movie and update movie lists
         selectedMovie.MovieRenter = selectedCustomer.CustomerName
         selectedCustomer.rentMovie(selectedMovie)
-        print("Movie " + str(selectedMovie.MovieName) + "rented by " + str(selectedCustomer.CustomerName))
-        # refresh the list of available movies
-        self.AllAvailableMovies()
-        # refresh the list of rented movies
-        self.AllRentedMovies()
+        print("Movie " + str(selectedMovie.MovieName) + " rented by " + str(selectedCustomer.CustomerName))
+        # add the rented movie to the list of rented movies
+        self.rentedMovies.append(selectedMovie)
+        print("The list of rented movies is " + str(self.rentedMovies))
+        # remove the rented movie from the list of available movies
+        self.allMovies.remove(selectedMovie)
+        print("The list of available movies is " + str(self.allMovies))
 
 # define the method to return a movie
 
@@ -84,15 +90,17 @@ class Rental:
         self.newMovie(firstMovie)
         self.newMovie(anotherMovie)
         self.newMovie(adifferentMovie)
-        # print ("the list is " + str(self.allMovies))
 
+        self.rentedMovies = self.AllRentedMovies()
+        self.allMovies = self.AllAvailableMovies()
+        print ("the list is " + str(self.allMovies))        
 # create the loop through to find the movies that haven't been rented
     def AllAvailableMovies(self):
         resultsAvail = []
         for movie in self.allMovies:
             # print a statement to check the movie name and the movie renter
-            # print(movie.MovieName)
-            # print(movie.MovieName.MovieRenter)
+            print(movie.MovieName)
+            print(movie.MovieName.MovieRenter)
             if movie.MovieName.MovieRenter == None:
                 resultsAvail.append(movie)
         return resultsAvail
@@ -100,8 +108,11 @@ class Rental:
     def AllRentedMovies(self):
         resultsRented = []
         for movie in self.allMovies:
-            # print(movie.MovieName)
-            # print(movie.MovieName.MovieRenter)
+            print(movie.MovieName)
+            print(movie.MovieName.MovieRenter)
             if movie.MovieName.MovieRenter != None:
                 resultsRented.append(movie)
         return resultsRented
+    
+# generate/append to the list of rented movies
+
